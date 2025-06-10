@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Alterar produto</h1>
+	<div>
+		<a th:href="@{/home}">Home</a>
+	</div>
+	<br />
+
+	<form th:action="@{/produto/salvar/{id} (id = ${produto.idproduto})}"
+		th:object="${produto}" method="post">
+		<!-- 
+			O atributo action também pode definir a passagem de	idproduto de duas formas:     
+    		<form th:action="@{'/produto/salvar/' + 
+				${produto.idproduto}}" th:object="${produto}" method="post" >    
+   				ou, delimitando por dois caracteres sublinhados após o caracter "/":      
+    		<form th:action="@{/produto/salvar/__${produto.idproduto}__}" 
+     			  th:object="${produto}" method="post" > 
+   		-->
+
+		<label>Id do produto</label><br /> <input type="text" name="nome"
+			readonly="readonly" th:field="*{idproduto}"
+			placeholder="Id do produto" /><br> <label>Nome do
+			produto</label><br /> <input type="text" name="nome" th:field="*{nome}"
+			placeholder="Nome do produto" /><br> <input type="submit"
+			value="Salvar" />
+	</form>
+</body>
+</html>

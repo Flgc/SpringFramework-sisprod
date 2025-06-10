@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/jvascript"> 
+ 
+  function validar(){ 
+   alert("validou"); 
+  }  
+ 
+ </script>
+
+</head>
+<body>
+	<h1>Listagem de Produtos</h1>
+	<div>
+		<a th:href="@{/home}">Home</a>
+	</div>
+	<br />
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Nome</th>
+				<th>Alterar</th>
+				<th>Excluir</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr style="font-size: 16px;" th:each="prod:${produtos}">
+				<td th:text="${prod.idproduto}"></td>
+				<td th:text="${prod.nome}"></td>
+				<td style="text-align: center; font-size: 75%;"><a
+					th:href="@{/produto/alterar/{id} (id = ${prod.idproduto})}"
+					onclick="validar();"><span style="color: blue;">Alt</span></a></td>
+				<td style="text-align: center; font-size: 75%;"><a
+					th:href="@{/produto/excluir/{id} (id = ${prod.idproduto})}"><span
+						style="color: red;">Exc</span></a></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

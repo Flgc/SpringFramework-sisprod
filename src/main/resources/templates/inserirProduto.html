@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Inserir produto</h1>
+	<div>
+		<a th:href="@{/home}">Home</a>
+	</div>
+	<br />
+
+	<form th:action="@{/produto/salvar}" th:object="${produto}"
+		method="post">
+
+		<!-- O campo id é do tipo auto-incremento e não deve ser fornecido!  -->
+
+		<label>Nome do produto</label><br /> <input type="text" name="nome"
+			th:field="*{nome}" placeholder="Nome do produto" /><br> <input
+			type="submit" value="Salvar" />
+	</form>
+</body>
+</html>
